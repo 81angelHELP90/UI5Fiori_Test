@@ -3,13 +3,38 @@
     xmlns:mvc="sap.ui.core.mvc"
     displayBlock="true"
     xmlns="sap.m"
+    xmlns:core="sap.ui.core"
 >
     <Shell id="shell">
         <App id="app">
             <pages>
                 <Page id="page" title="{i18n>title}">
                     <content>
-                       <Text id="t1" text="Prueba"></Text>
+                       <Panel id="panel1" headerText="Selection Screen">
+                            <Label id="labelShipeName" labelFor="shipName" text="{i18n>labelShipeName}" class="sapUiSmallMargin"/>
+                            <Input id="ShipName" value="{selectionScreen>/ShipName}" width="200px" class="sapUiSmallMargin"/>
+                            <Label id="labelCountry" text="{i18n>labelCountry}" class="sapUiSmallMargin"/>
+                            <Select id="sLCountry" 
+                                items="{selectionScreen>/Countries}"
+                                selectedKey="{selectionScreen>/CountryKey}"
+                                forceSelection="false"
+                                class="sapUiSmallMargin">
+                                <items>
+                                    <core:Item id="items1" key="{selectionScreen>key}" text="{selectionScreen>text}"/>
+                                </items>
+                            </Select>
+                            <Button id="btnFilters" 
+                                text="{i18n>btnFilters}"
+                                icon="sap-icon://filter"
+                                class="sapUiSmallMargin"
+                                press="onFiter" />
+                            
+                            <Button id="btnClearFilters" 
+                                text="{i18n>btnClearFilters}"
+                                icon="sap-icon://clear-filter"
+                                class="sapUiSmallMargin"
+                                press="onClearFilters" />
+                        </Panel>  
                     </content>
                 </Page>
             </pages>
